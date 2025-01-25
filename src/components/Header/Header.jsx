@@ -7,7 +7,6 @@ const Header = () => {
 
   return (
     <header>
-      <h1>{data}</h1>
       <h1>Pierre's General Store</h1>
       <h2>Stardew Valley's very own, coming to you soon!</h2>
       <LoadingData />

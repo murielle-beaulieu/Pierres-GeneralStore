@@ -1,15 +1,54 @@
 import { createContext, useEffect, useState } from "react";
+import { getAllInventory } from "../services/get-inventory";
 
-export const InventoryContext = createContext('UGH');
+export const InventoryContext = createContext('');
 
+const InventoryContextProvider = ({children}) => {
 
-const inventoryContextProvider = ({children}) => {
+  const [data, setData] = useState('');
+  const [fetchStatus, setFetchStatus] = useState('');
 
-    return (
-    <InventoryContext.Provider>
+      const fetchData = () => {
+    getAllInventory()
+      .then((docs) => {
+      setData(docs);
+      setFetchStatus('weeeehoo');
+      })
+      .catch((e) => {
+        console.log('Failed' + e);
+        setFetchStatus('ugh');
+      });
+    };
+
+      useEffect(() => {
+        fetchData();
+      },[fetchStatus]);
+
+      return (
+    <InventoryContext.Provider value={{data,fetchStatus}}>
       {children}
     </InventoryContext.Provider>
   )
 }
 
-export default inventoryContextProvider;
+export default InventoryContextProvider;
+
+
+
+// const SearchTermContextProvider = ({ children }) => {
+
+//   const [searchTerm, setSearchTerm] = useState('');
+
+//   const onSearch = (value) => {
+//     setSearchTerm(value);
+//   };
+
+//   console.log('connected');
+//   return (
+//     <SearchTermContext.Provider value={{searchTerm, onSearch}}>
+//       {children}
+//     </SearchTermContext.Provider>
+//   )
+// }
+
+// export default SearchTermContextProvider;

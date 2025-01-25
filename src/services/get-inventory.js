@@ -12,13 +12,30 @@ import {
 import { db } from '../config/firestore';
 
 export const getAllInventory = async () => {
-  // create a "collection" which is you selectioning a db of a name
   const collectionRef = collection(db, 'inventory');
-
-  // create a snapshot, essentially getDocs is the API call
   const snapshot = await getDocs(collectionRef);
-
-  // map over the docs which is
   return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 };
+
+export const getInventoryItem = async ({id}) => {
+  const docRef = doc(db, 'inventory', id);
+  const snapshot = await getDoc(docRef);
+  if (!snapshot.exists()) {
+    throw new Error (`Item not found`)
+  }
+  return {id: snapshot.id, ...snapshot.data()};
+};
+
 export default getAllInventory();
+
+// import { doc, getDoc } from "firebase/firestore";
+
+// const docRef = doc(db, "cities", "SF");
+// const docSnap = await getDoc(docRef);
+
+// if (docSnap.exists()) {
+//   console.log("Document data:", docSnap.data());
+// } else {
+//   // docSnap.data() will be undefined in this case
+//   console.log("No such document!");
+// }

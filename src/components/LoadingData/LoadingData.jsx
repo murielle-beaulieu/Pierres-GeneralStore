@@ -1,30 +1,14 @@
-import { useEffect, useState } from "react";
-import { getAllInventory } from "../../services/get-inventory"
 import Card from "../Card/Card";
+import { useContext } from 'react';
+import { InventoryContext } from "../../context/InventoryContextProvider";
+import { getInventoryItem } from "../../services/get-inventory";
 
 const LoadingData = () => {
-   const [data, setData] = useState('');
-   const [fetchStatus, setFetchStatus] = useState('');
 
-    const fetchData = () => {
-      getAllInventory()
-        .then((data) => {
-        setData(data[0]);
-        setFetchStatus('weeeehoo');
-        })
-        .catch((e) => {
-          console.log('Failed' + e);
-          setFetchStatus('ugh');
-        });
-      };
-
-      useEffect(() => {
-        fetchData();
-      },[fetchStatus]);
-
+  const { data, fetchStatus } = useContext(InventoryContext);
       return(
         <>
-        {fetchStatus ==='weeeehoo' && <Card data={data}/>}
+        {fetchStatus ==='weeeehoo' && data.map((item) => <Card key={item.id} data={item}/>)}
         </>
       );
 }
