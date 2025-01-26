@@ -1,9 +1,7 @@
-import { useParams } from "react-router";
 import classes from "./Card.module.scss"
 
 const Card = ({data}) => {
-
-    return(
+  return(
     <div className={classes.item}>
       <h2>{data.name}</h2>
       <p>{data.season} seeds</p>

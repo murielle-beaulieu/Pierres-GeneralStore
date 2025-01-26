@@ -9,6 +9,7 @@ import InventoryContextProvider from './context/InventoryContextProvider';
 
 
 function App() {
+  console.log('HELLO??');
 
   return (
     <>

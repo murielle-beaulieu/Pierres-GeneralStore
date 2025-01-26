@@ -1,7 +1,6 @@
 import Card from "../Card/Card";
 import { useContext } from 'react';
 import { InventoryContext } from "../../context/InventoryContextProvider";
-import { getInventoryItem } from "../../services/get-inventory";
 
 const LoadingData = () => {
 

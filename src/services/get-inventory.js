@@ -17,25 +17,26 @@ export const getAllInventory = async () => {
   return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 };
 
-export const getInventoryItem = async ({id}) => {
+export const getInventoryItem = async (id) => {
   const docRef = doc(db, 'inventory', id);
   const snapshot = await getDoc(docRef);
+  console.log(snapshot)
   if (!snapshot.exists()) {
-    throw new Error (`Item not found`)
+    throw new Error (`Item not found, (Item# ${id})`)
   }
   return {id: snapshot.id, ...snapshot.data()};
 };
 
-export default getAllInventory();
+console.log(getInventoryItem('1'));
 
-// import { doc, getDoc } from "firebase/firestore";
 
-// const docRef = doc(db, "cities", "SF");
-// const docSnap = await getDoc(docRef);
+// ->>>> maybe I need to use the context and use the data.id
 
-// if (docSnap.exists()) {
-//   console.log("Document data:", docSnap.data());
-// } else {
-//   // docSnap.data() will be undefined in this case
-//   console.log("No such document!");
-// }
+// export const getMovieById = async (id) => {
+//   const docRef = doc(db, 'movies', id);
+//   const snapshot = await getDoc(docRef);
+//   if (!snapshot.exists()) {
+//     throw new Error('Could not find movie with id ' + id);
+//   }
+//   return { id: snapshot.id, ...snapshot.data() };
+// };

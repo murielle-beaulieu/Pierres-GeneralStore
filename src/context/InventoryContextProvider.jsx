@@ -9,7 +9,7 @@ const InventoryContextProvider = ({children}) => {
   const [fetchStatus, setFetchStatus] = useState('');
 
       const fetchData = () => {
-    getAllInventory()
+      getAllInventory()
       .then((docs) => {
       setData(docs);
       setFetchStatus('weeeehoo');
