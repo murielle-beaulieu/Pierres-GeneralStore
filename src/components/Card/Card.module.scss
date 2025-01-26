@@ -1,5 +1,7 @@
 .item {
-  height: 20em;
+  min-height: 20em;
+  height: auto;
   width: 20em;
+  padding: 0.5em;
   border: 1px solid green;
 }

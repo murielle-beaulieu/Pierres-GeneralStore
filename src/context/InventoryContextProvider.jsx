@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { getAllInventory } from "../services/get-inventory";
+import { getAllInventory } from "../services/inventory";
 
 export const InventoryContext = createContext('');
 
@@ -32,23 +32,3 @@ const InventoryContextProvider = ({children}) => {
 }
 
 export default InventoryContextProvider;
-
-
-
-// const SearchTermContextProvider = ({ children }) => {
-
-//   const [searchTerm, setSearchTerm] = useState('');
-
-//   const onSearch = (value) => {
-//     setSearchTerm(value);
-//   };
-
-//   console.log('connected');
-//   return (
-//     <SearchTermContext.Provider value={{searchTerm, onSearch}}>
-//       {children}
-//     </SearchTermContext.Provider>
-//   )
-// }
-
-// export default SearchTermContextProvider;
