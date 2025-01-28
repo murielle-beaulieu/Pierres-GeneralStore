@@ -16,12 +16,6 @@ const ItemDetails = ({item}) => {
     setQty((qty) => qty + 1);
   }
 
-
-  // const addToCart = () => {
-  //   setCart(item.name);
-  //   console.log(qty,cart);
-  // }
-
   return (
     <section>
       { itemVariant === 'seeds' && <img className={classes.product_img} src={item.image} alt={item.name}/> }
