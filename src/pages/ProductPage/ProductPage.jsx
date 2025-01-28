@@ -24,7 +24,7 @@ const ProductPage = () => {
     fetchItem(id);
   return (
     <>
-      <h1>Product Page - One Item</h1>
+      <h1>{item.name}</h1>
       {fetchStatus === 'weeeehoo' && <ItemDetails item={item}/>}
     </>
   )

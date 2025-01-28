@@ -5,9 +5,10 @@ import { InventoryContext } from "../../context/InventoryContextProvider";
 const LoadingData = () => {
 
   const { data, fetchStatus } = useContext(InventoryContext);
+
       return(
         <main>
-        {fetchStatus ==='weeeehoo' && data.map((item) => <Card key={item.id} data={item}/>)}
+          {fetchStatus ==='weeeehoo' && data.map((item) => <Card key={item.id} data={item}/>)}
         </main>
       );
 }

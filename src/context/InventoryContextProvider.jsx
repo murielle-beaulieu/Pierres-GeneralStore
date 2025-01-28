@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { getAllInventory } from "../services/inventory";
 
-export const InventoryContext = createContext('');
+export const InventoryContext = createContext({});
 
 const InventoryContextProvider = ({children}) => {
 
