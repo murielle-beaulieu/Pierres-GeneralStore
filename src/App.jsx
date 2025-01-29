@@ -3,7 +3,7 @@ import './services/inventory';
 import { BrowserRouter, Routes, Route } from "react-router"
 import ProductPage from './pages/ProductPage/ProductPage';
 import CheckoutPage from './pages/CheckoutPage/CheckoutPage';
-import Header from './components/Header/Header';
+import HomePage from './pages/HomePage/HomePage';
 import InventoryContextProvider from './context/InventoryContextProvider';
 
 
@@ -13,7 +13,7 @@ function App() {
         <BrowserRouter>
           <InventoryContextProvider>
             <Routes>
-              <Route path="/" element={<><Header/></>}/>
+              <Route path="/" element={<HomePage/>}/>
               <Route path="/products/:id" element={<ProductPage />}/>
               <Route path="/checkout" element={<CheckoutPage/>}/>
             </Routes>
