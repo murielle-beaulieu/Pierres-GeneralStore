@@ -1,3 +1,21 @@
 .carousel {
+  min-width: auto;
+  display: flex;
+  justify-content: center;
   border: solid 1px green;
+  margin: 2em;
+  h2{
+    text-transform: capitalize;
+  }
+}
+
+.display {
+  // width: 10em;
+  // height: 12em;
+  background-color: white;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1em;
 }

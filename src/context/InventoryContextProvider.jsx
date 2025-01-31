@@ -3,20 +3,27 @@ import { getAllInventory } from "../services/inventory";
 
 export const InventoryContext = createContext({});
 
+
 const InventoryContextProvider = ({children}) => {
+
+  const LoadingStatus = {
+    Loading: "loading",
+    Success: "success",
+    Failed: "failed"
+  };
 
   const [data, setData] = useState('');
   const [fetchStatus, setFetchStatus] = useState('');
 
-      const fetchData = () => {
+    const fetchData = () => {
       getAllInventory()
       .then((docs) => {
       setData(docs);
-      setFetchStatus('weeeehoo');
+      setFetchStatus(LoadingStatus.Success);
       })
       .catch((e) => {
         console.log('Failed' + e);
-        setFetchStatus('ugh');
+        setFetchStatus(LoadingStatus.Failed);
       });
     };
 

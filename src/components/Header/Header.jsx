@@ -1,5 +1,3 @@
-import LoadingData from "../LoadingData/LoadingData";
-
 const Header = () => {
   return (
     <header>

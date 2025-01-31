@@ -1,23 +1,43 @@
-import Button from "../../components/Button/Button";
-import { useContext } from "react";
-import { InventoryContext } from "../../context/InventoryContextProvider";
+import { useState, useEffect } from "react";
+import BasketItem from "../../components/BasketItem/BasketItem";
 
 const CheckoutPage = () => {
 
-const { data } = useContext(InventoryContext);
+  // const [shop, setShop] = useState(false);
+  const [shopping, setShopping] = useState([]);
 
-// const basket = {...localStorage};
+  const basket = [];
 
-// for (let [key, value] of Object.entries(localStorage)) {
-//     console.log(`${key}: ${value}`);
-// }
+  useEffect(() => {
 
-  return (
-    <>
-      <h1>Checkout Page</h1>
-      <Button onClick={() => console.log('hello, no items in your basket!')} value={'display items in console'}/>
-    </>
-)
+    for (let [item, qty] of Object.entries(localStorage)) {
+    const obj = JSON.parse(item);
+      // setBasket(JSON.parse(item));
+    basket.push(obj);
+    }
+    setShopping(basket);
+  }, []);
+
+  console.log(shopping);
+
+    return (
+      <>
+          <h1>Checkout Page</h1>
+          {shopping.length > 0 && shopping.map((item) => <BasketItem item={item}/>)}
+        </>
+    )
 }
-
 export default CheckoutPage;
+
+
+/* Adding an item */
+// window.localStorage.setItem("key", "value")
+
+/* Getting an item */
+// window.localStorage.getItem('Data')
+
+/* Removing an item */
+// window.localStorage.removeItem("Data");
+
+/* Removing all items */
+// window.localStorage.clear();
