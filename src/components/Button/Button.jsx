@@ -1,8 +1,10 @@
+import classes from "./Button.module.scss";
+
 const Button = ({onClick, value}) => {
 
   return (
     <>
-    <button onClick={onClick}>{value}</button>
+    <button className={classes.btn} onClick={onClick}>{value}</button>
     </>
   )
 }

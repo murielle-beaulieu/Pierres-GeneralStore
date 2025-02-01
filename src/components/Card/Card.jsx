@@ -9,8 +9,8 @@ const Card = ({data}) => {
       <h2>{data.name}</h2>
       <p>{data.season} seeds</p>
       <img src={data.image}></img>
-      <h3>Price (in season): {data.seasonal_price}</h3>
-      <h3>Price (off season): {data.offseason_price}</h3>
+      <p>Pack price: {data.seedpack_price}</p>
+      <p>Seedling price: {data.seedling_price}</p>
       <p>Growth Days: {data.growth_days}</p>
       <Link to={`/products/${data.id}`}>See more</Link>
     </div>
