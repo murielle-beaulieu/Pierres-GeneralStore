@@ -1,10 +1,8 @@
 import classes from "./CartItem.module.scss";
 import Button from "../Button/Button";
-import { useState } from "react";
+import { updateSeedpackStock, updateSeedlingStock } from "../../services/inventory";
 
 const CartItem = ({item}) => {
-
-  const cartStorage = {...localStorage};
 
   const deleting = (item) => {
     // window.localStorage.removeItem(item);
@@ -14,12 +12,23 @@ const CartItem = ({item}) => {
         let key = localStorage.key(i);
         if (key.includes(`"name":"${item.name}"`)) {
         localStorage.removeItem(key);
+        window.location.reload(); // not loving this
         break;
       }
     }
-  }
 
-  cartStorage.forEach((item) => console.log(item.name));
+    if (item.variant === 'Seeds') {
+      let restoreStock = parseInt(item.qty) + (parseInt(item.seedpack_stock) - parseInt(item.qty));
+      updateSeedpackStock(item.id, restoreStock).then(console.log('success'));
+    }
+
+    if (item.variant === 'Seedlings') {
+      let remainingStock = parseInt(item.seedling_stock) - parseInt(item.qty);
+      let restoreStock = parseInt(item.qty) + remainingStock;
+      updateSeedlingStock(item.id, restoreStock).then(console.log('success'));
+      console.log(item.seedling_stock);
+    }
+  }
   return(
     <section className={classes.cart_item}>
       <h2>{item.name} {item.variant}</h2>

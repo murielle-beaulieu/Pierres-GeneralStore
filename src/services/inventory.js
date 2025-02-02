@@ -4,6 +4,7 @@ import {
   getDoc,
   getDocs,
   updateDoc,
+  setDoc,
 } from 'firebase/firestore';
 
 import { db } from '../config/firestore';
@@ -25,8 +26,19 @@ export const getInventoryItem = async (id) => {
   return {id: snapshot.id, ...snapshot.data()};
 };
 
-// update
-export const updateItemStock = async (id, newData) => {
+// update - seedpack
+export const updateSeedpackStock = async (id, newQty) => {
   const docRef = doc(db, 'inventory', id);
-  return updateDoc(docRef, newData)
+  await updateDoc(docRef, {
+    seedpack_stock: newQty
+  });
+}
+
+
+// update - seedling
+export const updateSeedlingStock = async (id, newQty) => {
+  const docRef = doc(db, 'inventory', id);
+  await updateDoc(docRef, {
+    seedling_stock: newQty
+  });
 }

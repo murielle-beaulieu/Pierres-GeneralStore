@@ -2,8 +2,7 @@ import { Link } from "react-router";
 import classes from "./Product.module.scss"
 import Button from "../Button/Button";
 import { useEffect, useState} from "react";
-import { updateItemStock } from "../../services/inventory";
-
+import { updateSeedpackStock, updateSeedlingStock} from "../../services/inventory";
 const ItemDetails = ({item, id}) => {
 
   const [qty, setQty] = useState(0)
@@ -32,7 +31,8 @@ const ItemDetails = ({item, id}) => {
         console.log ('no way jose')
         return;
       } else {
-        updateItemStock(itemID, qty).then(() => console.log('success'));
+        let seedRemaining = (item.seedpack_stock - qty);
+        updateSeedpackStock(itemID, seedRemaining).then(console.log('success'));
         return window.localStorage.setItem(`${JSON.stringify(cartItem)}`,`${qty}`)
       }
     }
@@ -42,6 +42,8 @@ const ItemDetails = ({item, id}) => {
         console.log ('in your dream mister')
         return;
       } else {
+        let seedlingRemaining = (item.seedling_stock - qty);
+        updateSeedlingStock(itemID, seedlingRemaining).then(console.log('success'));
         return window.localStorage.setItem(`${JSON.stringify(cartItem)}`,`${qty}`)
       }
     }
