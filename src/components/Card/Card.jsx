@@ -5,15 +5,12 @@ const Card = ({data}) => {
 
 
   return(
-    <div className={classes.item}>
+    <section className={classes.item}>
       <h2>{data.name}</h2>
       <p>{data.season} seeds</p>
-      <img src={data.image}></img>
-      <h3>Price (in season): {data.seasonal_price}</h3>
-      <h3>Price (off season): {data.offseason_price}</h3>
-      <p>Growth Days: {data.growth_days}</p>
+      <img src={data.plant_image}></img>
       <Link to={`/products/${data.id}`}>See more</Link>
-    </div>
+    </section>
   )
 }
 

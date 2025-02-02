@@ -26,7 +26,6 @@ const InventoryContextProvider = ({children}) => {
         setFetchStatus(LoadingStatus.Failed);
       });
     };
-
       useEffect(() => {
         fetchData();
       },[fetchStatus]);
