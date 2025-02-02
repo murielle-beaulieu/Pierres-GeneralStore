@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import BasketItem from "../../components/BasketItem/BasketItem";
+import CartItem from "../../components/CartItem/CartItem";
+
 
 const CheckoutPage = () => {
 
@@ -8,22 +9,21 @@ const CheckoutPage = () => {
   const basket = [];
 
   useEffect(() => {
-
     for (let [item, qty] of Object.entries(localStorage)) {
     const obj = JSON.parse(item);
-    obj.qty = qty;
-    basket.push(obj);
+      obj.qty = qty;
+      basket.push(obj);
     }
-
     setShopping(basket);
   }, []);
+
 
   console.log(shopping);
 
     return (
       <>
-          <h1>Checkout Page</h1>
-          {shopping.length > 0 && shopping.map((item) => <BasketItem item={item}/>)}
+        <h1>Checkout Page</h1>
+        {shopping.length > 0 && shopping.map((item) => <CartItem item={item} key={item.id} id={item.id}/>)}
       </>
     )
 }
