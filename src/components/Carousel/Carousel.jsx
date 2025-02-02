@@ -3,14 +3,15 @@ import classes from "./Carousel.module.scss";
 import { useContext } from "react";
 import { InventoryContext } from "../../context/InventoryContextProvider";
 import CarouselDisplay from "./CarouselDisplay";
+import Button from "../Button/Button";
 
 const Carousel = () => {
   const {fetchStatus, data} = useContext(InventoryContext);
 
   const [season, setSeason] = useState(null);
   const date = new Date();
-  // const month = date.getMonth();
-  const month = 9;
+  const month = date.getMonth();
+  // const month = 9;
 
   useEffect(() => {
     if (month == 11 || month == 0 || month == 1) {
@@ -24,12 +25,15 @@ const Carousel = () => {
     }
   }, [])
 
+
   return (
       <div className={classes.carousel}>
-        <div>
-          <h2>{`Featured product for ${season}`}</h2>
-        </div>
-        {fetchStatus !== 'success' || data === null ? (<h2>Loading</h2>) : data.filter((item)=> item.season === season).map((item) => <CarouselDisplay key={item.id} data={item}/>)}
+        {/* <Button onClick={()=> back()} value='<' /> */}
+          <div>
+            <h2>{`Featured product for ${season}`}</h2>
+          </div>
+          {fetchStatus !== 'success' || data === null ? (<h2>Loading</h2>) : data.filter((item)=> item.season === season).map((item) => <CarouselDisplay key={item.id} data={item}/>)}
+        {/* <Button onClick={()=> console.log('forward')} value='>' /> */}
       </div>
   )
 }
