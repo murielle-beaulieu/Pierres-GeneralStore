@@ -8,6 +8,7 @@ const ItemDetails = ({item, id}) => {
 
   const [qty, setQty] = useState(0)
   const [itemVariant, setItemVariant] = useState('Seeds');
+  const [addedToCart, setAddedToCart] = useState(false);
   const [cartItem, setCartItem] = useState(item);
 
   const initialItem = item;
@@ -33,8 +34,13 @@ const ItemDetails = ({item, id}) => {
         return;
       } else {
         let seedRemaining = (item.seedpack_stock - qty);
-        updateSeedpackStock(itemID, seedRemaining).then(console.log('success'));
-        return window.localStorage.setItem(`${JSON.stringify(cartItem)}`,`${qty}`)
+        updateSeedpackStock(itemID, seedRemaining).then(setAddedToCart(true));
+        window.localStorage.setItem(`${JSON.stringify(cartItem)}`,`${qty}`);
+        setQty(0);
+
+        setTimeout(() => {
+          setAddedToCart(false);
+        }, 2000);
       }
     }
 
@@ -44,10 +50,17 @@ const ItemDetails = ({item, id}) => {
         return;
       } else {
         let seedlingRemaining = (item.seedling_stock - qty);
-        updateSeedlingStock(itemID, seedlingRemaining).then(console.log('success'));
-        return window.localStorage.setItem(`${JSON.stringify(cartItem)}`,`${qty}`)
+        updateSeedlingStock(itemID, seedlingRemaining).then(setAddedToCart(true));
+        window.localStorage.setItem(`${JSON.stringify(cartItem)}`,`${qty}`)
+        setQty(0);
+
+        setTimeout(() => {
+          setAddedToCart(false);
+        }, 2000);
       }
     }
+
+
   }
 
   return (
@@ -79,6 +92,7 @@ const ItemDetails = ({item, id}) => {
         <Button onClick={increment} value={'+'}/>
         <Button onClick={() => addToCart(itemID, qty)} value={'Add to Cart'}/>
       </div>
+      {addedToCart && <div className={classes.success}><p>{item.name} added to cart! See your cart <Link to="/checkout"> here</Link> </p></div>}
     </article>
     </>
   )

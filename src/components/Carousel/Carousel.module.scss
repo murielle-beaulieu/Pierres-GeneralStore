@@ -28,7 +28,7 @@
   align-items: center;
   flex-direction: column;
   margin: 1em;
-  border: solid 2px green;
+  border: solid 4px green;
   height: 10em;
   width: 10em;
   img {
@@ -56,4 +56,9 @@ button {
     font-size: 2em;
     margin-bottom: 0.5em;
   }
+}
+
+.load {
+  font-size: 1.25em;
+  padding: 4em;
 }

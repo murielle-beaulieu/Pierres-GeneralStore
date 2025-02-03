@@ -1,6 +1,6 @@
 import { useParams } from "react-router";
 import { getInventoryItem } from "../../services/inventory";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Product from "../../components/Product/Product";
 import NavBar from "../../components/NavBar/NavBar";
 
@@ -11,24 +11,34 @@ const ProductPage = () => {
   const [item, setItem] = useState('');
   const [fetchStatus, setFetchStatus] = useState('');
 
+  const LoadingStatus = {
+    Loading: "loading",
+    Success: "success",
+    Failed: "failed"
+  };
+
+
   const fetchItem = (id) => {
+    setFetchStatus(LoadingStatus.Loading);
     getInventoryItem(id)
       .then((doc) => {
       setItem(doc);
-      setFetchStatus('weeeehoo');
+      setFetchStatus(LoadingStatus.Success);
       })
-      .catch((e) => {
-        console.log('Failed' + e);
-        setFetchStatus('ugh');
+      .catch(() => {
+        setFetchStatus(LoadingStatus.Failed);
       });
     };
 
-    fetchItem(id);
+    useEffect(() => {
+      fetchItem(id);
+    },[]);
+
 
   return (
     <>
       <NavBar/>
-      {fetchStatus === 'weeeehoo' && <Product item={item} id={id}/>}
+      {fetchStatus === 'success' && <Product item={item} id={id}/>}
     </>
   )
 

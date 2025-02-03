@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import CartItem from "../../components/CartItem/CartItem";
 import NavBar from "../../components/NavBar/NavBar";
 import classes from "./CheckoutPage.module.scss"
+import Button from "../../components/Button/Button";
 
 const CheckoutPage = () => {
 
@@ -34,16 +35,17 @@ const CheckoutPage = () => {
     return (
       <>
         <NavBar/>
-        <h1>Checkout Page</h1>
+        <h1>Your Cart</h1>
         {shopping.length == 0 &&
         <section className={classes.empty_cart}>
           <img src="./src/assets/empty.png"/>
           <h2>Your cart is empty, head back to the <Link to={"/"}>main page</Link> and start browsing!</h2>
         </section>}
         {shopping.length > 0 && shopping.map((item) => <CartItem item={item} key={item.id} id={item.id}/>)}
-        <section>
-        <h2>Total: {cartTotal}</h2>
-      </section>
+        <footer>
+          <h2>Total: {cartTotal}.00</h2>
+          <Button onClick={console.log('eventually')} value="Pay Now"/>
+        </footer>
       </>
     )
 }
