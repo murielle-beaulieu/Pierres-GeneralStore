@@ -1,6 +1,7 @@
 import Carousel from "../../components/Carousel/Carousel";
 import Header from "../../components/Header/Header"
 import LoadingData from "../../components/LoadingData/LoadingData";
+import NavBar from "../../components/NavBar/NavBar";
 
 const HomePage = () => {
   return (

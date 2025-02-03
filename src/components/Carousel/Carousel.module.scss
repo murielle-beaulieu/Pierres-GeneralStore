@@ -1,22 +1,36 @@
 .carousel {
-  height: 20em;
-  width: 50em;
-  display: flex;
+  height: auto;
+  width: 60em;
+  display: inline-block;
   justify-content: center;
-  border: solid 1px green;
-  margin: auto;
+  border: solid 3px green;
+  margin: 2em auto;
+  padding: 1em;
   h2{
     text-transform: capitalize;
+    margin: 0;
   }
 }
 
 .display {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.carousel_card {
   color: black;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   margin: 1em;
-  border: solid 1px green;
-  height: 15em;
-  width: 15em;
+  border: solid 2px green;
+  height: 10em;
+  width: 10em;
+  img {
+    width: 6em;
+    padding: 1em;
+  }
 }

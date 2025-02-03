@@ -28,10 +28,10 @@ const Carousel = () => {
   return (
       <div className={classes.carousel}>
         {/* <Button onClick={()=> back()} value='<' /> */}
-          <div>
-            <h2>{`Featured product for ${season}`}</h2>
+          <h2>{`Featured product for ${season}`}</h2>
+          <div className={classes.display}>
+            {fetchStatus !== 'success' || data === null ? (<h2>Loading</h2>) : data.filter((item)=> item.season === season).map((item) => <CarouselDisplay key={item.id} data={item}/>)}
           </div>
-          {fetchStatus !== 'success' || data === null ? (<h2>Loading</h2>) : data.filter((item)=> item.season === season).map((item) => <CarouselDisplay key={item.id} data={item}/>)}
         {/* <Button onClick={()=> console.log('forward')} value='>' /> */}
       </div>
   )

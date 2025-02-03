@@ -1,0 +1,24 @@
+.nav {
+  height: 3em;
+  width: 100%;
+  background-color: green;
+  position: sticky;
+  top: 0;
+  margin-bottom: 1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  img {
+    height: 1.75em;
+    margin: 0.5em 2em;
+  }
+  a {
+    text-decoration: none;
+    color: white;
+  }
+}
+
+.cart{
+  height: 2em;
+  transform: scale(1.30);
+}
