@@ -1,11 +1,11 @@
 #root {
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
 
 main {
   display: flex;
   flex-wrap: wrap;
-  margin: auto;
+  /* margin: auto; */
+  /* gap: 1em; */
 }

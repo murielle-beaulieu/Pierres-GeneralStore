@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import classes from "./Product.module.scss"
 import Button from "../Button/Button";
 import { useEffect, useState} from "react";
-import { updateItemStock } from "../../services/inventory";
+import { updateSeedpackStock, updateSeedlingStock} from "../../services/inventory";
 
 const ItemDetails = ({item, id}) => {
 
@@ -32,7 +32,8 @@ const ItemDetails = ({item, id}) => {
         console.log ('no way jose')
         return;
       } else {
-        updateItemStock(itemID, qty).then(() => console.log('success'));
+        let seedRemaining = (item.seedpack_stock - qty);
+        updateSeedpackStock(itemID, seedRemaining).then(console.log('success'));
         return window.localStorage.setItem(`${JSON.stringify(cartItem)}`,`${qty}`)
       }
     }
@@ -42,26 +43,32 @@ const ItemDetails = ({item, id}) => {
         console.log ('in your dream mister')
         return;
       } else {
+        let seedlingRemaining = (item.seedling_stock - qty);
+        updateSeedlingStock(itemID, seedlingRemaining).then(console.log('success'));
         return window.localStorage.setItem(`${JSON.stringify(cartItem)}`,`${qty}`)
       }
     }
   }
 
   return (
-    <section>
+    <>
+    <div className={classes.back}>
+      <Link to="/">Back</Link>
+    </div>
+    <article className={classes.product}>
       <h1>{item.name} {itemVariant}</h1>
       { itemVariant === 'Seeds' ? <img className={classes.product_img} src={item.pack_image} alt={item.name}/> : <img className={classes.product_img} src={item.seedling_image} alt={item.name} />}
-
       <h2>{item.description}</h2>
-      {itemVariant === 'Seeds' ?  <>
-      <p>Seed pack price: {item.seedpack_price}</p>
+      {itemVariant === 'Seeds' ?
+      <section className ={classes.product_details}>
+      <p>Seedpack price: {item.seedpack_price}</p>
       <p>Growth to Maturity in: {item.growth_days}</p>
       <p>Available stock: {item.seedpack_stock}</p>
-      </> : <>
+      </section> : <section className ={classes.product_details}>
       <p>Seedling price: {item.seedling_price}</p>
       <p>Growth to Maturity in: {item.growth_days -3}</p>
       <p>Available stock: {item.seedling_stock}</p>
-      </>}
+      </section>}
       <div>
         <Button onClick={() => setItemVariant('Seeds')} value={'Seed Pack'}/>
         <Button onClick={() => setItemVariant('Seedlings')} value={'Seedling'}/>
@@ -72,8 +79,8 @@ const ItemDetails = ({item, id}) => {
         <Button onClick={increment} value={'+'}/>
         <Button onClick={() => addToCart(itemID, qty)} value={'Add to Cart'}/>
       </div>
-      <Link to="/">Back</Link>
-    </section>
+    </article>
+    </>
   )
 }
 

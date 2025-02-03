@@ -3,14 +3,20 @@ import { Link } from "react-router";
 
 const Card = ({data}) => {
 
-
   return(
-    <section className={classes.item}>
-      <h2>{data.name}</h2>
-      <p>{data.season} seeds</p>
-      <img src={data.plant_image}></img>
+    <article className={classes.item}>
+        <div className={classes.title}>
+          <h2>{data.name}</h2>
+        </div>
+      <section className={classes.item_details}>
+        <h4><i>{data.season} {data.category}</i></h4>
+        <p>from ${data.seedpack_price}.00</p>
+      </section>
+      <section className={classes.item_img}>
+        <img src={data.plant_image} alt={data.name} className={classes.item_img}></img>
+      </section>
       <Link to={`/products/${data.id}`}>See more</Link>
-    </section>
+    </article>
   )
 }
 
