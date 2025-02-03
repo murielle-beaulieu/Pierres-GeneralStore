@@ -11,7 +11,6 @@ const Carousel = () => {
   const [season, setSeason] = useState(null);
   const date = new Date();
   const month = date.getMonth();
-  // const month = 9;
 
   useEffect(() => {
     if (month == 11 || month == 0 || month == 1) {

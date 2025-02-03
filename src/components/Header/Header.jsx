@@ -1,8 +1,9 @@
+import classes from "./Header.module.scss";
+
 const Header = () => {
   return (
     <header>
-      <h1>Pierre's General Store</h1>
-      <h2>Stardew Valley's very own, coming to you soon!</h2>
+      <img src="../src/assets/PierresBanner.png" alt="Pierre's Banner" className={classes.banner}/>
     </header>
   )
 }
