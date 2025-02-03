@@ -1,7 +1,30 @@
 .cart_item {
   background-color: white;
   color: black;
-  height: 12em;
-  width: 25em;
+  height: 18em;
+  width: 36em;
   text-align: left;
+  border: solid 1px black;
+  display: flex;
+  justify-content: space-between;
+  margin: 4em auto;
+}
+
+.cart_img {
+  width: 16em;
+  height: 100%;
+  border-right: solid 1px black;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  img {
+    margin: 4em;
+  }
+}
+
+.item_details {
+  width: 100%;
+  font-size: 1.25em;
+  margin: 1em;
+
 }

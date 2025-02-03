@@ -6,7 +6,7 @@ const CarouselDisplay = ({data}) => {
   return(
     <div className={classes.carousel_card}>
       <img src={data.pack_image}></img>
-      <h2>{data.name}</h2>
+      <h4>{data.name}</h4>
     </div>
   )
 }

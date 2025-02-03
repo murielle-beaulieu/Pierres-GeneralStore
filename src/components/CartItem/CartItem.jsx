@@ -5,8 +5,6 @@ import { updateSeedpackStock, updateSeedlingStock } from "../../services/invento
 const CartItem = ({item}) => {
 
   const deleting = (item) => {
-    // window.localStorage.removeItem(item);
-    console.log('deleting ' + item.name);
 
     for (let i = 0; i < localStorage.length; i++) {
         let key = localStorage.key(i);
@@ -25,20 +23,28 @@ const CartItem = ({item}) => {
     if (item.variant === 'Seedlings') {
       let remainingStock = parseInt(item.seedling_stock) - parseInt(item.qty);
       let restoreStock = parseInt(item.qty) + remainingStock;
+      console.log(itemPrice);
       updateSeedlingStock(item.id, restoreStock).then(console.log('success'));
-      console.log(item.seedling_stock);
     }
   }
+
   return(
-    <section className={classes.cart_item}>
+    <>
+    <article className={classes.cart_item}>
+      <section className={classes.cart_img}>
+      { item.variant === 'Seeds' ? <img className={classes.product_img} src={item.pack_image} alt={item.name}/> : <img className={classes.product_img} src={item.seedling_image} alt={item.name} />}
+      </section>
+      <section className={classes.item_details}>
       <h2>{item.name} {item.variant}</h2>
-      <div>
-        <h3> qty: {item.qty}</h3>
-        {item.variant === 'seeds'? <h3>price per item: {item.seedpack_price}</h3> : <h3>price per item: {item.seedling_price}</h3>}
-      </div>
-      {item.variant === 'seeds'? <h3>total: {item.seedpack_price * item.qty}</h3> : <h3>total: {item.seedling_price * item.qty}</h3>}
-      <Button onClick={() => deleting(item)} value='x'/>
-    </section>
+        <div>
+          <h3> Quantity: {item.qty}</h3>
+          {item.variant === 'seeds'? <h3>Price per item: {item.seedpack_price}</h3> : <h3>price per item: {item.seedling_price}</h3>}
+        </div>
+        {item.variant === 'seeds'? <h3>Total: {item.seedpack_price * item.qty}</h3> : <h3>total: {item.seedling_price * item.qty}</h3>}
+        <Button onClick={() => deleting(item)} value='x'/>
+      </section>
+    </article>
+    </>
   )
 }
 

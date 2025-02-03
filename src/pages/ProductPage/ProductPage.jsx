@@ -2,6 +2,7 @@ import { useParams } from "react-router";
 import { getInventoryItem } from "../../services/inventory";
 import { useState } from "react";
 import Product from "../../components/Product/Product";
+import NavBar from "../../components/NavBar/NavBar";
 
 const ProductPage = () => {
 
@@ -26,6 +27,7 @@ const ProductPage = () => {
 
   return (
     <>
+      <NavBar/>
       {fetchStatus === 'weeeehoo' && <Product item={item} id={id}/>}
     </>
   )
