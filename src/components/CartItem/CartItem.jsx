@@ -38,10 +38,12 @@ const CartItem = ({item}) => {
       <h2>{item.name} {item.variant}</h2>
         <div>
           <h3> Quantity: {item.qty}</h3>
-          {item.variant === 'seeds'? <h3>Price per item: {item.seedpack_price}</h3> : <h3>price per item: {item.seedling_price}</h3>}
+          {item.variant === 'seeds'? <h3>Price per item: {item.seedpack_price}.00</h3> : <h3>Price per item: {item.seedling_price}.00</h3>}
         </div>
-        {item.variant === 'seeds'? <h3>Total: {item.seedpack_price * item.qty}</h3> : <h3>total: {item.seedling_price * item.qty}</h3>}
-        <Button onClick={() => deleting(item)} value='x'/>
+        {item.variant === 'seeds'? <h3>Total: {item.seedpack_price * item.qty}.00</h3> : <h3>Total: {item.seedling_price * item.qty}.00</h3>}
+       <div className={classes.delete_btn}>
+          <Button onClick={() => deleting(item)} value='x'/>
+       </div>
       </section>
     </article>
     </>

@@ -16,6 +16,8 @@ const InventoryContextProvider = ({children}) => {
   const [fetchStatus, setFetchStatus] = useState('');
 
     const fetchData = () => {
+      setFetchStatus(LoadingStatus.Loading);
+
       getAllInventory()
       .then((docs) => {
       setData(docs);
@@ -26,12 +28,13 @@ const InventoryContextProvider = ({children}) => {
         setFetchStatus(LoadingStatus.Failed);
       });
     };
+
       useEffect(() => {
-        fetchData();
-      },[fetchStatus]);
+         fetchData();
+      },[]);
 
       return (
-    <InventoryContext.Provider value={{data,fetchStatus}}>
+    <InventoryContext.Provider value={{data, fetchStatus, LoadingStatus}}>
       {children}
     </InventoryContext.Provider>
   )

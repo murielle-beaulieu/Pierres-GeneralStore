@@ -4,16 +4,17 @@
   height: 18em;
   width: 36em;
   text-align: left;
-  border: solid 1px black;
+  border: solid 4px black;
   display: flex;
   justify-content: space-between;
   margin: 4em auto;
+  border-radius: 8px;
 }
 
 .cart_img {
   width: 16em;
   height: 100%;
-  border-right: solid 1px black;
+  border-right: solid 4px black;
   display: flex;
   justify-content: center;
   align-content: center;
@@ -23,8 +24,25 @@
 }
 
 .item_details {
+  display: block;
   width: 100%;
   font-size: 1.25em;
   margin: 1em;
+  line-height: 2.35em;
+}
 
+.delete_btn {
+  text-align: end;
+  width: 100%;
+  margin: 0 1em;
+  button {
+    color: white;
+    background-color: rgba(255, 0, 0, 0.892);
+    font-size: 1em;
+    &:hover {
+      transition: 0.2s;
+      transform: scale(1.05);
+      border: 1px solid rgba(255, 0, 0);
+    }
+  }
 }

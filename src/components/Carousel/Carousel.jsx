@@ -45,7 +45,7 @@ const Carousel = () => {
           </div>
           <div className={classes.display}>
             <Button onClick={()=> back()} value='<' />
-            {fetchStatus !== 'success' || data === null ? (<h2>Loading</h2>) : data.filter((item)=> item.season === season).slice(currentIndex, currentIndex + 2).map((item) => <CarouselDisplay key={item.id} data={item}/>)}
+            {fetchStatus !== 'success' || data === null ? (<div className={classes.load}><h2>Loading</h2></div>) : data.filter((item)=> item.season === season).slice(currentIndex, currentIndex + 2).map((item) => <CarouselDisplay key={item.id} data={item}/>)}
             <Button onClick={()=> forward()} value='>' />
           </div>
       </div>
