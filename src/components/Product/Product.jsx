@@ -31,12 +31,12 @@ const ItemDetails = ({item, id}) => {
     if (itemVariant === 'Seeds') {
       if (qty > item.seedpack_stock){
         console.log ('no way jose')
+        // would like to implement a failure to add message
         return;
       } else {
         let seedRemaining = (item.seedpack_stock - qty);
         updateSeedpackStock(itemID, seedRemaining).then(setAddedToCart(true));
         window.localStorage.setItem(`${JSON.stringify(cartItem)}`,`${qty}`);
-        setQty(0);
 
         setTimeout(() => {
           setAddedToCart(false);
@@ -47,19 +47,17 @@ const ItemDetails = ({item, id}) => {
     if (itemVariant === 'Seedlings') {
       if (qty > item.seedling_stock){
         console.log ('in your dream mister')
+        // would like to implement a failure to add message
         return;
       } else {
         let seedlingRemaining = (item.seedling_stock - qty);
         updateSeedlingStock(itemID, seedlingRemaining).then(setAddedToCart(true));
         window.localStorage.setItem(`${JSON.stringify(cartItem)}`,`${qty}`)
-        setQty(0);
-
         setTimeout(() => {
           setAddedToCart(false);
         }, 2000);
       }
     }
-
 
   }
 

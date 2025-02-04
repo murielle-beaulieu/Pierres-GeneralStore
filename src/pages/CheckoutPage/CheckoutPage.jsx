@@ -32,6 +32,8 @@ const CheckoutPage = () => {
     setShopping(basket);
   }, []);
 
+  // need to implement "payment"
+
     return (
       <>
         <NavBar/>
