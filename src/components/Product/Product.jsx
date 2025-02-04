@@ -31,6 +31,7 @@ const ItemDetails = ({item, id}) => {
     if (itemVariant === 'Seeds') {
       if (qty > item.seedpack_stock){
         console.log ('no way jose')
+        // would like to implement a failure to add message
         return;
       } else {
         let seedRemaining = (item.seedpack_stock - qty);
@@ -46,6 +47,7 @@ const ItemDetails = ({item, id}) => {
     if (itemVariant === 'Seedlings') {
       if (qty > item.seedling_stock){
         console.log ('in your dream mister')
+        // would like to implement a failure to add message
         return;
       } else {
         let seedlingRemaining = (item.seedling_stock - qty);
@@ -56,7 +58,6 @@ const ItemDetails = ({item, id}) => {
         }, 2000);
       }
     }
-
 
   }
 

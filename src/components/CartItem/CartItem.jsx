@@ -41,9 +41,9 @@ const CartItem = ({item}) => {
           {item.variant === 'seeds'? <h3>Price per item: {item.seedpack_price}.00</h3> : <h3>Price per item: {item.seedling_price}.00</h3>}
         </div>
         {item.variant === 'seeds'? <h3>Total: {item.seedpack_price * item.qty}.00</h3> : <h3>Total: {item.seedling_price * item.qty}.00</h3>}
-       <div className={classes.delete_btn}>
+        <div className={classes.delete_btn}>
           <Button onClick={() => deleting(item)} value='x'/>
-       </div>
+        </div>
       </section>
     </article>
     </>
