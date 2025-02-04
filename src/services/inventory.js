@@ -25,6 +25,9 @@ export const getInventoryItem = async (id) => {
   return {id: snapshot.id, ...snapshot.data()};
 };
 
+
+// find a way to combine both
+
 // update - seedpack
 export const updateSeedpackStock = async (id, newQty) => {
   const docRef = doc(db, 'inventory', id);
@@ -32,7 +35,6 @@ export const updateSeedpackStock = async (id, newQty) => {
     seedpack_stock: newQty
   });
 }
-
 
 // update - seedling
 export const updateSeedlingStock = async (id, newQty) => {
