@@ -36,7 +36,6 @@ const ItemDetails = ({item, id}) => {
         let seedRemaining = (item.seedpack_stock - qty);
         updateSeedpackStock(itemID, seedRemaining).then(setAddedToCart(true));
         window.localStorage.setItem(`${JSON.stringify(cartItem)}`,`${qty}`);
-        setQty(0);
 
         setTimeout(() => {
           setAddedToCart(false);
@@ -52,8 +51,6 @@ const ItemDetails = ({item, id}) => {
         let seedlingRemaining = (item.seedling_stock - qty);
         updateSeedlingStock(itemID, seedlingRemaining).then(setAddedToCart(true));
         window.localStorage.setItem(`${JSON.stringify(cartItem)}`,`${qty}`)
-        setQty(0);
-
         setTimeout(() => {
           setAddedToCart(false);
         }, 2000);

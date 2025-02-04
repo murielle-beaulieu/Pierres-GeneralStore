@@ -3,19 +3,11 @@ import { useContext } from 'react';
 import { InventoryContext } from "../../context/InventoryContextProvider";
 import classes from "./CardContainer.module.scss";
 import Skeleton from "../Skeleton/Skeleton";
-import { useNavigate } from "react-router";
 
 const CardContainer = () => {
 
   const { data, fetchStatus} = useContext(InventoryContext);
 
-  // const navigate = useNavigate();
-
-  function handleClick() {
-    // navigate(`/products/${data.id}`);
-
-    console.log(`/products/${data.id}`);
-  }
     return(
         <main className={classes.card_container}>
         {fetchStatus === 'loading' && <Skeleton/>}
